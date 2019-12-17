@@ -1,5 +1,6 @@
 import React from 'react'
 import { Trisection } from '../components/trisection'
+import { Link } from 'react-router-dom'
 
 const top = <img className alt="logo"/>
 
@@ -9,7 +10,7 @@ const mid = <div>
     <p>Let's get your free trial started</p>
 </div>
 
-const bottom = <button>Register</button>
+const bottom = <Link to="/register">Register</Link>
 
 export function Welcome(props) {
     return(
