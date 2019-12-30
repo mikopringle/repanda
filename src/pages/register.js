@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Redirect } from 'react-router-dom'
 import '../css/register.css'
 
 export function Register(props) {
@@ -9,6 +10,7 @@ export function Register(props) {
     const [code, setCode] = useState("")
     const [abn, setAbn] = useState("")
     const [submission, setSubmission] = useState({submitted: false, error: null, message: null})
+    const [toHome, setToHome] = useState(false)
 
     const submit = () => {
         setSubmission({
@@ -16,6 +18,7 @@ export function Register(props) {
             error: false,
             message: null
         })
+        setTimeout(() => {setToHome(true)}, 5000)
     }
 
     const form = <form className="register">
@@ -36,9 +39,7 @@ export function Register(props) {
         </label>
     </form>
 
-    const success = <div>
-        success
-    </div>
+    const success = toHome ? <Redirect to="/" /> : <h2>success! redirecting in 5 seconds...</h2>
 
     const error = <div>
         error
