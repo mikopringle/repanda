@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import '../css/register.css'
+import {postRegister} from '../api/api'
 
 export function Register(props) {
     const [email, setEmail] = useState("")
@@ -12,13 +13,38 @@ export function Register(props) {
     const [submission, setSubmission] = useState({submitted: false, error: null, message: null})
     const [toHome, setToHome] = useState(false)
 
-    const submit = () => {
-        setSubmission({
-            submitted: true,
-            error: false,
-            message: null
-        })
-        setTimeout(() => {setToHome(true)}, 5000)
+ async function submit() {
+        const params = {
+            email: email,
+            password: password,
+            name: name,
+            inudstry: inudstry
+        }
+        try {
+            const response = await postRegister(params)
+            if (response.ok) {
+                setSubmission({
+                    submitted: true,
+                    error: false,
+                    message: null
+                })
+                setTimeout(() => {setToHome(true)}, 5000)
+            }
+        }
+        catch(err) {
+            setSubmission({
+                submitted: true,
+                error: true,
+                message: err.message
+            })
+            setTimeout(() => {
+                setSubmission({
+                    submitted: false,
+                    error: null,
+                    message: null
+                })
+            }, 5000)
+        }
     }
 
     const form = <form className="register">
@@ -41,9 +67,7 @@ export function Register(props) {
 
     const success = toHome ? <Redirect to="/" /> : <h2>success! redirecting in 5 seconds...</h2>
 
-    const error = <div>
-        error
-    </div>
+    const error = <h2>Error! redirecting back in 5 seconds...</h2>
 
     if (!submission.submitted) {
         return form
