@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Welcome } from './pages/welcome'
 import {
   BrowserRouter as Router,
@@ -8,6 +8,9 @@ import {
 import { Register } from './pages/register';
 
 function App() {
+  const [signed, setSigned] = useState(false)
+  const [name, setName] = useState("")
+
   return (
     <Router>
       <Switch>
