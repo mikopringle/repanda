@@ -6,6 +6,7 @@ import {
   Route
 } from "react-router-dom";
 import { Register } from './pages/register';
+import { Login } from './pages/login' 
 
 function App() {
   const [signed, setSigned] = useState(false)
@@ -17,7 +18,10 @@ function App() {
         <Route path="/register">
           <Register />
         </Route>
-        <Route path="/">
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route exact path="/">
           <Welcome />
         </Route>
       </Switch>

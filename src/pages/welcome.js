@@ -10,7 +10,10 @@ const mid = <div>
     <p>Let's get your free trial started</p>
 </div>
 
-const bottom = <Link to="/register">Register</Link>
+const bottom = <div>
+    <Link to="/register">Register</Link>
+    <Link to="/login">Login</Link>
+</div>
 
 export function Welcome(props) {
     return(
