@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import '../css/register.css'
-import {postRegister} from '../api/api'
+import axios from 'axios'
 
 export function Register(props) {
     const [email, setEmail] = useState("")
@@ -21,21 +21,23 @@ export function Register(props) {
             inudstry: inudstry
         }
         try {
-            const response = await postRegister(params)
-            if (response.ok) {
-                setSubmission({
-                    submitted: true,
-                    error: false,
-                    message: null
-                })
-                setTimeout(() => {setToHome(true)}, 5000)
-            }
+            const res = await axios.post("http://52.63.127.93:3000/user/new", params)
+            console.log(res)
+            setSubmission({
+                submitted: true,
+                error: false,
+                message: null
+            })
+            setTimeout(() => {
+                setToHome(true)
+            }, 5000)
         }
         catch(err) {
+            console.log(err.response)
             setSubmission({
                 submitted: true,
                 error: true,
-                message: err.message
+                message: err.response.data
             })
             setTimeout(() => {
                 setSubmission({
@@ -47,7 +49,7 @@ export function Register(props) {
         }
     }
 
-    const form = <form className="register">
+    const form = <div className="register">
         <label>
             Email:
         <input value={email} onChange={(e) => setEmail(e.target.value)}></input>
@@ -61,13 +63,13 @@ export function Register(props) {
         <input value={abn} onChange={(e) => setAbn(e.target.value)} />
             Invitation Code:
         <input value={code} onChange={(e) => setCode(e.target.value)} />
-            <input type="submit" value="Submit" onClick={submit} />
+            <button onClick={submit}>Submit</button>
         </label>
-    </form>
+    </div>
 
     const success = toHome ? <Redirect to="/" /> : <h2>success! redirecting in 5 seconds...</h2>
 
-    const error = <h2>Error! redirecting back in 5 seconds...</h2>
+const error = <div><h2>Error! redirecting back in 5 seconds...</h2><p>Server side response:{submission.message}</p></div>
 
     if (!submission.submitted) {
         return form
