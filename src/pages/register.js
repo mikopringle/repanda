@@ -10,10 +10,10 @@ export function Register(props) {
     const [inudstry, setIndustry] = useState("")
     const [code, setCode] = useState("")
     const [abn, setAbn] = useState("")
-    const [submission, setSubmission] = useState({submitted: false, error: null, message: null})
+    const [submission, setSubmission] = useState({ submitted: false, error: null, message: null })
     const [toHome, setToHome] = useState(false)
 
- async function submit() {
+    async function submit() {
         const params = {
             email: email,
             password: password,
@@ -32,7 +32,7 @@ export function Register(props) {
                 setToHome(true)
             }, 5000)
         }
-        catch(err) {
+        catch (err) {
             console.log(err.response)
             setSubmission({
                 submitted: true,
@@ -54,7 +54,7 @@ export function Register(props) {
             Email:
         <input value={email} onChange={(e) => setEmail(e.target.value)}></input>
             Password:
-        <input value={password} onChange={(e) => setPassword(e.target.value)}></input>
+        <input value={password} type="password" onChange={(e) => setPassword(e.target.value)}></input>
             Company Name:
         <input value={name} onChange={(e) => setName(e.target.value)}></input>
             Company Industry:
@@ -69,7 +69,7 @@ export function Register(props) {
 
     const success = toHome ? <Redirect to="/" /> : <h2>success! redirecting in 5 seconds...</h2>
 
-const error = <div><h2>Error! redirecting back in 5 seconds...</h2><p>Server side response:{submission.message}</p></div>
+    const error = <div><h2>Error! redirecting back in 5 seconds...</h2><p>Server side response:{submission.message}</p></div>
 
     if (!submission.submitted) {
         return form
