@@ -2,7 +2,7 @@ import React from 'react'
 import { Trisection } from '../components/trisection'
 import { Link } from 'react-router-dom'
 
-const top = <img className alt="logo"/>
+const top = <img alt="logo"/>
 
 const mid = <div>
     <p>Employees are your most important asset</p>
