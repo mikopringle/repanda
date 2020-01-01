@@ -10,19 +10,24 @@ import { Login } from './pages/login'
 
 function App() {
   const [signed, setSigned] = useState(false)
-  const [name, setName] = useState("")
+  const [companyName, setCompanyName] = useState("")
+
+  const stateProps = {
+    setSigned: setSigned,
+    setCompanyName: setCompanyName
+  }
 
   return (
     <Router>
       <Switch>
         <Route path="/register">
-          <Register />
+          <Register {...stateProps}/>
         </Route>
         <Route path="/login">
           <Login />
         </Route>
         <Route exact path="/">
-          <Welcome />
+          {signed ? <Welcome /> : <Welcome />}
         </Route>
       </Switch>
     </Router>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import '../css/register.css'
-import axios from 'axios'
+import { post } from '../api/api'
 
 export function Register(props) {
     const [email, setEmail] = useState("")
@@ -21,13 +21,15 @@ export function Register(props) {
             inudstry: inudstry
         }
         try {
-            const res = await axios.post("http://52.63.127.93:3000/user/new", params)
+            const res = await post('user/new', params)
             console.log(res)
             setSubmission({
                 submitted: true,
                 error: false,
                 message: null
             })
+            props.setCompanyName(params.name)
+            props.setSigned(true)
             setTimeout(() => {
                 setToHome(true)
             }, 5000)
