@@ -12,22 +12,24 @@ import { Status } from './components/status'
 
 function App() {
   const [signed, setSigned] = useState(false)
-  const [companyName, setCompanyName] = useState("")
+  const [email, setEmail] = useState("")
+  const [token, setToken] = useState("")
 
   const stateProps = {
     setSigned: setSigned,
-    setCompanyName: setCompanyName
+    setEmail: setEmail,
+    setToken: setToken
   }
 
   return (
     <Router>
-      <Status companyName={companyName}/>
+      <Status email={email} />
       <Switch>
         <Route path="/register">
           <Register {...stateProps}/>
         </Route>
         <Route path="/login">
-          <Login />
+          <Login {...stateProps}/>
         </Route>
         <Route exact path="/">
           {signed ? <Dash /> : <Welcome />}

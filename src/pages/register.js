@@ -28,8 +28,6 @@ export function Register(props) {
                 error: false,
                 message: null
             })
-            props.setCompanyName(params.name)
-            props.setSigned(true)
             setTimeout(() => {
                 setToHome(true)
             }, 5000)
