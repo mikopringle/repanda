@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 //renders three equal parts in a top down tri section page
 export function Trisection(props) {
     return (
