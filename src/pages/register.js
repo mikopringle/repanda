@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import '../css/register.css'
 import { post } from '../api/api'
 
+
 export function Register(props) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
