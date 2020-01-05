@@ -5,9 +5,9 @@ import React from 'react'
 export function Trisection(props) {
     return (
         <div className="tri-sect">
-            <div className="top">{props.top}</div>
-            <div className="mid">{props.mid}</div>
-            <div className="bottom">{props.bottom}</div>
+            <div className="block text-gray-700 text-center bg-gray-400 px-4 py-2">{props.top}</div>
+            <div className="block text-gray-700 text-center bg-gray-400 px-4 py-2 mt-2">{props.mid}</div>
+            <div className="block text-gray-700 text-center bg-gray-400 px-4 py-2 mt-2">{props.bottom}</div>
         </div>
     );
 }
