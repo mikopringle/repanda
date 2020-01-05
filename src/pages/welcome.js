@@ -1,7 +1,6 @@
 import React from 'react'
 import { Trisection } from '../components/trisection'
 import { Link } from 'react-router-dom'
-import '../css/welcome.css'
 
 
 const top = <h1>SurveyPanda</h1>
