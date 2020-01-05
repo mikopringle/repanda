@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
-import '../css/register.css'
 import { post } from '../api/api'
 
 

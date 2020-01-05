@@ -22,7 +22,8 @@ function App() {
   }
 
   return (
-    <Router>
+    <div className="container mx-auto font-mono">
+      <Router>
       <Status email={email} />
       <Switch>
         <Route path="/register">
@@ -35,7 +36,8 @@ function App() {
           {signed ? <Dash /> : <Welcome />}
         </Route>
       </Switch>
-    </Router>
+      </Router>
+    </div>
   );
 }
 
