@@ -21,6 +21,8 @@
 # tailwind compiled css
 /src/styles/tailwind.css
 
+package-lock.json
+
 .vscode
 npm-debug.log*
 yarn-debug.log*
