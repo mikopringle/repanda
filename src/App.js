@@ -14,11 +14,20 @@ function App() {
   const [signed, setSigned] = useState(false)
   const [email, setEmail] = useState("")
   const [token, setToken] = useState("")
+  const [companyId, setCompanyId] = useState("")
 
   const stateProps = {
     setSigned: setSigned,
     setEmail: setEmail,
-    setToken: setToken
+    setToken: setToken,
+    setCompanyId: setCompanyId
+  }
+  
+  const states = {
+    signed: signed,
+    email: email,
+    token: token,
+    companyId: companyId
   }
 
   return (
@@ -33,7 +42,7 @@ function App() {
           <Login {...stateProps}/>
         </Route>
         <Route exact path="/">
-          {signed ? <Dash /> : <Welcome />}
+          {signed ? <Dash {...states}/> : <Welcome />}
         </Route>
       </Switch>
       </Router>
