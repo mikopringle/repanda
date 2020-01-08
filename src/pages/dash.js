@@ -23,7 +23,7 @@ export function Dash(props){
             }
         }
         apiCall(`search/day?id=${props.companyId}`)
-    },[])
+    },[props.companyId])
 
     if (loading && !success) {
         return <h1>Fetching insights, sit tight!</h1>
