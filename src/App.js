@@ -27,13 +27,19 @@ function App() {
     signed: signed,
     email: email,
     token: token,
-    companyId: companyId
+    companyId: companyId,
+    logout: () => {
+      setEmail("")
+      setToken("")
+      setCompanyId("")
+      setSigned(false)
+    }
   }
 
   return (
     <div className="container mx-auto font-mono">
       <Router>
-      <Status email={email} />
+      <Status {...states} />
       <Switch>
         <Route path="/register">
           <Register {...stateProps}/>

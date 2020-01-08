@@ -22,7 +22,7 @@ export function Dash(props){
                 console.log(err.message)
             }
         }
-        apiCall(`search/day?id=${props.companyId}`)
+        apiCall(`search/week?id=${props.companyId}`)
     },[props.companyId])
 
     if (loading && !success) {
