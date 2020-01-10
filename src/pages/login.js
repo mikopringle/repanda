@@ -29,10 +29,18 @@ export function Login(props) {
             setTimeout(() => setToHome(true), 3000)
         }
         catch (err) {
-            setSubmission({
-                success: false,
-                message: err.response.data.message
-            })
+            if (err.response){
+                setSubmission({
+                    success: false,
+                    message: err.response.data.message
+                })
+            }
+            else {
+                setSubmission({
+                    success: false,
+                    message: err.message
+                })
+            }
         }
 
     }
@@ -50,7 +58,7 @@ export function Login(props) {
 
             <input className="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
             <div className=" px-2 pt-1 pb-1 mb-8 resize bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">>
-            <button onCLick={submit}>Log in</button>
+            <button onClick={submit}>Log in</button>
             </div>
 
             {submission.success ? <p>Log in success!</p> : <p>{submission.message}</p>}
