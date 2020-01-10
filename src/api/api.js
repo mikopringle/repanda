@@ -8,7 +8,7 @@ export function post(route, body) {
     return axios.post(url, body)
 }
 
-export function get(route, header) {
+export function get(route) {
     const url = devUrl + route
     return axios.get(url)
 }

@@ -14,17 +14,32 @@ function App() {
   const [signed, setSigned] = useState(false)
   const [email, setEmail] = useState("")
   const [token, setToken] = useState("")
+  const [companyId, setCompanyId] = useState("")
 
   const stateProps = {
     setSigned: setSigned,
     setEmail: setEmail,
-    setToken: setToken
+    setToken: setToken,
+    setCompanyId: setCompanyId
+  }
+  
+  const states = {
+    signed: signed,
+    email: email,
+    token: token,
+    companyId: companyId,
+    logout: () => {
+      setEmail("")
+      setToken("")
+      setCompanyId("")
+      setSigned(false)
+    }
   }
 
   return (
     <div className="container mx-auto font-mono">
       <Router>
-      <Status email={email} />
+      <Status {...states} />
       <Switch>
         <Route path="/register">
           <Register {...stateProps}/>
@@ -33,7 +48,7 @@ function App() {
           <Login {...stateProps}/>
         </Route>
         <Route exact path="/">
-          {signed ? <Dash /> : <Welcome />}
+          {signed ? <Dash {...states}/> : <Welcome />}
         </Route>
       </Switch>
       </Router>

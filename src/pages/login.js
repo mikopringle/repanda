@@ -25,6 +25,7 @@ export function Login(props) {
             props.setSigned(true)
             props.setEmail(body.email)
             props.setToken(res.data.token)
+            props.setCompanyId(res.data.companyId)
             setTimeout(() => setToHome(true), 3000)
         }
         catch(err) {
