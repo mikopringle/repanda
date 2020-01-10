@@ -38,11 +38,22 @@ export function Login(props) {
 
     const form = <div>
         <label>
+            <div className=" text-gray-700 text-xl font-bold mb-4" >
             Email:
-            <input value={email} onChange={(e) => setEmail(e.target.value)}/>
+
+            </div>
+        
+            <input className ="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value={email} onChange={(e) => setEmail(e.target.value)}/>
+            <div className=" text-gray-700 text-xl font-bold mb-4" >
             Password:
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-            <input type="submit" value="Log In" onClick={submit}/>
+
+            </div>
+            
+            <input className ="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+            <div className =" px-2 pt-1 pb-1 mb-8 resize bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">>
+            <button onCLick={submit}>Log in</button>
+            </div>
+            
             {submission.success ? <p>Log in success!</p> : <p>{submission.message}</p>}
         </label>
     </div>
