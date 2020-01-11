@@ -51,6 +51,7 @@ export function Register(props) {
 
     const form = <div className="register">
         <label>
+        <h1  className= "bg-teal-500 text-white text-2xl font-bold font-sans flex items-center justify-center" >SurveyPanda</h1>
             Email:
         <input value={email} onChange={(e) => setEmail(e.target.value)}></input>
             Password:
