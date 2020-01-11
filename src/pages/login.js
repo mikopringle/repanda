@@ -59,7 +59,7 @@ export function Login(props) {
                 onChange={(e) => setPassword(e.target.value)} />
 
             <div className="px-2 pt-1 pb-1 mb-8 resize bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none              focus:shadow-outline">
-                <button onClick={submit}>Log in</button>
+                <button className="font-bold  py-2 px-3 text-xl rounded-lg inline-block bg-teal-500 text-white" onClick={submit}>Log in</button>
             </div>
 
             {submission.success ? <p>Log in success!</p> : <p>{submission.message}</p>}
