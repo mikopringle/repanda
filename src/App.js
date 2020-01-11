@@ -1,26 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import { Welcome } from './pages/welcome'
 import {
   BrowserRouter as Router,
   Switch,
   Route
-} from "react-router-dom";
-import { Register } from './pages/register';
+} from "react-router-dom"
+import { Register } from './pages/register'
 import { Login } from './pages/login' 
 import { Dash } from './pages/dash'
 import { Status } from './components/status'
+import { Questionnaire } from './pages/question'
 
 function App() {
   const [signed, setSigned] = useState(false)
   const [email, setEmail] = useState("")
   const [token, setToken] = useState("")
   const [companyId, setCompanyId] = useState("")
+  const [employeeMode, setEmployeeMode] = useState(false)
 
   const stateProps = {
     setSigned: setSigned,
     setEmail: setEmail,
     setToken: setToken,
-    setCompanyId: setCompanyId
+    setCompanyId: setCompanyId,
+    setEmployeeMode: setEmployeeMode
   }
   
   const states = {
@@ -28,6 +31,7 @@ function App() {
     email: email,
     token: token,
     companyId: companyId,
+    employeeMode: employeeMode,
     logout: () => {
       setEmail("")
       setToken("")
@@ -48,7 +52,7 @@ function App() {
           <Login {...stateProps}/>
         </Route>
         <Route exact path="/">
-          {signed ? <Dash {...states}/> : <Welcome />}
+          {signed ? employeeMode ? <Questionnaire /> : <Dash {...states} {...stateProps}/> : <Welcome />}
         </Route>
       </Switch>
       </Router>
