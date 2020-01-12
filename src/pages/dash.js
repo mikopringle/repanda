@@ -25,11 +25,26 @@ export function Dash(props){
         apiCall(`search/week?id=${props.companyId}`)
     },[props.companyId])
 
+    //button that switches to employee mode
+    const employeeMode = <button onClick={() => props.setEmployeeMode(true)}>Switch to employee mode</button>
+
+    //loading screen
+    const loadingScreen = <h1>Fetching insights, sit tight!</h1>
+
+    //dashboard on successful data fetching
+    const successScreen = <div>
+        <ul>{measures.map((measure, i) => <li key={measure}>{measure}: {averages[i]}</li>)}</ul>
+        {employeeMode}
+    </div>
+
+    //error display
+    const errorScreen = <h1>Error fetching</h1>
+
     if (loading && !success) {
-        return <h1>Fetching insights, sit tight!</h1>
+        return loadingScreen
     }
     else if (!loading && success) {
-        return <ul>{measures.map((measure, i) => <li key={measure}>{measure}: {averages[i]}</li>)}</ul>
+        return successScreen
     }
-    else return <h1>Error fetching</h1>
+    else return errorScreen
 }
