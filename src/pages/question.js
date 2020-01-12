@@ -10,13 +10,18 @@ export function Questionnaire(props){
             try {
                 const res = await get(route)
                 console.log(res)
+                setQuestions(res.data.questions.map((question) => question.text))
             }
             catch (err) {
                 console.log(err.message)
             }
         }
-        apiCall(`question/today?id=${props.compayId}`)
-    },[])
+        apiCall(`question/today?id=${props.companyId}`)
+    },[props.companyId])
 
-    return <div>{}</div>
+    const questionsJsx = <ul>
+        {questions.map((question) => <li key={question}>{question}</li>)}
+    </ul>
+
+    return <div>{questionsJsx}</div>
 } 
