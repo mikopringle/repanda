@@ -10,19 +10,8 @@ export function Questionnaire(props){
     const [success, setSuccess] = useState(false)
     const [error, setError] = useState(false)
 
-    //fetches questions on render
     //fires the post request event if ready
     useEffect(() => {
-        const loadQuestions = async () => {
-            try {
-                const res = await get(`question/today?id=${props.companyId}`)
-                console.log(res)
-                setQuestions(res.data.questions.map((question) => question.text))
-            }
-            catch (err) {
-                console.log(err.message)
-            }
-        }
         const submitQuestions = async () => {
             try{
                 const payload = {
@@ -50,11 +39,25 @@ export function Questionnaire(props){
                 }, 3000)
             }
         }
-        loadQuestions()
         if (ready){
             submitQuestions()
         }
     },[props.companyId, answers, ready])
+
+    //fetches questions on render
+    useEffect(() => {
+        const loadQuestions = async () => {
+            try {
+                const res = await get(`question/today?id=${props.companyId}`)
+                console.log(res)
+                setQuestions(res.data.questions.map((question) => question.text))
+            }
+            catch (err) {
+                console.log(err.message)
+            }
+        }
+        loadQuestions()
+    }, [props.companyId])
 
     //stores answer in the answers array, and advance to the next question
     //If current question is the last one then submit answers
