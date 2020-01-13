@@ -52,7 +52,7 @@ function App() {
           <Login {...stateProps}/>
         </Route>
         <Route exact path="/">
-          {signed ? employeeMode ? <Questionnaire {...states}/> : <Dash {...states} {...stateProps}/> : <Welcome />}
+          {signed ? employeeMode ? <Questionnaire {...states} {...stateProps} /> : <Dash {...states} {...stateProps}/> : <Welcome />}
         </Route>
       </Switch>
       </Router>
