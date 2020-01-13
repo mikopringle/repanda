@@ -51,19 +51,32 @@ export function Register(props) {
 
     const form = <div className="register">
         <label>
-            Email:
-        <input value={email} onChange={(e) => setEmail(e.target.value)}></input>
-            Password:
-        <input value={password} type="password" onChange={(e) => setPassword(e.target.value)}></input>
-            Company Name:
-        <input value={name} onChange={(e) => setName(e.target.value)}></input>
-            Company Industry:
-        <input value={inudstry} onChange={(e) => setIndustry(e.target.value)}></input>
-            Company ABN:
-        <input value={abn} onChange={(e) => setAbn(e.target.value)} />
-            Invitation Code:
-        <input value={code} onChange={(e) => setCode(e.target.value)} />
-            <button onClick={submit}>Submit</button>
+            <h1 className="bg-teal-500 text-white text-2xl font-bold font-sans flex items-center justify-center" >SurveyPanda</h1>
+            <div className="text-gray-700 text-xl font-bold mb-1">
+                Company Name:
+           </div>
+            <input className="appearance-none block  bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-6 leading-tight focus:outline-none focus:bg-white w-64" value={name} onChange={(e) => setName(e.target.value)}></input>
+            <div className="text-gray-700 text-xl font-bold mb-1">
+                Company Industry:
+           </div>
+            <input className="appearance-none block bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-6 leading-tight focus:outline-none focus:bg-white w-64" value={inudstry} onChange={(e) => setIndustry(e.target.value)}></input>
+            <div className="text-gray-700 text-xl font-bold mb-1">
+                Email:
+           </div>
+            <input className="appearance-none block bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-6 leading-tight focus:outline-none focus:bg-white w-64" value={email} onChange={(e) => setEmail(e.target.value)}></input>
+            <div className="text-gray-700 text-xl font-bold mb-1">
+                Password:
+           </div>
+            <input className="appearance-none block  bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-6 leading-tight focus:outline-none focus:bg-white w-64" value={password} type="password" onChange={(e) => setPassword(e.target.value)}></input>
+            <div className="text-gray-700 text-xl font-bold mb-1">
+                Company ABN:
+           </div>
+            <input className="appearance-none block  bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-6 leading-tight focus:outline-none focus:bg-white w-64" value={abn} onChange={(e) => setAbn(e.target.value)} />
+            <div className="text-gray-700 text-xl font-bold mb-1">
+                Invitation Code:
+           </div>
+            <input className="appearance-none block  bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-6 leading-tight focus:outline-none focus:bg-white w-64" value={code} onChange={(e) => setCode(e.target.value)} />
+            <button className="font-bold  py-2 px-3 text-xl rounded-lg bg-teal-500 text-white flex items-center justify-center" onClick={submit}>Submit</button>
         </label>
     </div>
 
