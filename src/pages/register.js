@@ -63,7 +63,7 @@ export function Register(props) {
             <StyledInput value={email} setValue={setEmail} />
 
             <StyledLabel text="Password" />
-            <StyledInput value={password} setValue={setPassword} />
+            <StyledInput value={password} type={password} setValue={setPassword} />
 
             <StyledLabel text="Company ABN" />
             <StyledInput value={abn} setValue={setAbn} />
