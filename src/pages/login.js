@@ -49,7 +49,7 @@ export function Login(props) {
     }
 
     const form = <div>
-            <StyledLabel text="Email" />
+            <StyledLabel text="Email Address" />
             <StyledInput value={email} setValue={setEmail} placeholder="Email"/>
 
             <StyledLabel text="Password" />
