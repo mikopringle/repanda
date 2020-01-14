@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { post } from '../api/api'
-import Logo from '../components/logo'
 import { ActionButton } from '../components/buttons'
+import { CardWLogo } from '../components/containers'
+import { StyledLabel, StyledInput } from '../components/formElements'
 
 
 export function Register(props) {
@@ -51,30 +52,24 @@ export function Register(props) {
         }
     }
 
-    const inputStyles = "appearance-none block bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-6 leading-tight focus:outline-none focus:bg-white w-64"
-
-    const StyledLabel = (props) => <div className="text-gray-700 text-xl font-bold mb-1">{props.text}</div>
-
     const form = <div>
-            <Logo />
-
             <StyledLabel text="Company Name" />
-            <input className={inputStyles} value={name} onChange={(e) => setName(e.target.value)}></input>
+            <StyledInput value={name} setValue={setName}/>
 
             <StyledLabel text="Company Industry" />
-            <input className={inputStyles} value={inudstry} onChange={(e) => setIndustry(e.target.value)}></input>
+            <StyledInput value={inudstry} setValue={setIndustry} />
             
             <StyledLabel text="Email" />
-            <input className={inputStyles} value={email} onChange={(e) => setEmail(e.target.value)}></input>
+            <StyledInput value={email} setValue={setEmail} />
 
             <StyledLabel text="Password" />
-            <input className={inputStyles} value={password} type="password" onChange={(e) => setPassword(e.target.value)}></input>
+            <StyledInput value={password} setValue={setPassword} />
 
             <StyledLabel text="Company ABN" />
-            <input className={inputStyles} value={abn} onChange={(e) => setAbn(e.target.value)} />
+            <StyledInput value={abn} setValue={setAbn} />
             
             <StyledLabel text="Invitation Code" />
-            <input className={inputStyles} value={code} onChange={(e) => setCode(e.target.value)} />
+            <StyledInput value={code} setValue={setCode} />
 
             <ActionButton action={submit} text="submit" />
     </div>
@@ -84,12 +79,12 @@ export function Register(props) {
     const error = <div><h2>Error! redirecting back in 5 seconds...</h2><p>Server side response:{submission.message}</p></div>
 
     if (!submission.submitted) {
-        return form
+        return <CardWLogo child={form} />
     }
     else if (submission.submitted && !submission.error) {
-        return success
+        return <CardWLogo child={success} />
     }
     else {
-        return error
+        return <CardWLogo child={error} />
     }
 }

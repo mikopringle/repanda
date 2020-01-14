@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { post } from '../api/api'
 import { Redirect } from 'react-router-dom'
+import { StyledLabel, StyledInput } from '../components/formElements'
+import { ActionButton } from '../components/buttons'
+import { CardWLogo } from '../components/containers'
 
 export function Login(props) {
     const [email, setEmail] = useState("")
@@ -46,25 +49,15 @@ export function Login(props) {
     }
 
     const form = <div>
-        <label>
-            <div className="text-gray-700 text-xl font-bold mb-4" >Email:</div>
-            
-            <input className="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                value={email} onChange={(e) => setEmail(e.target.value)} />
-            
-            <div className="text-gray-700 text-xl font-bold mb-4" >Password:</div>
+            <StyledLabel text="Email" />
+            <StyledInput value={email} setValue={setEmail} />
 
-            <input className="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                type="password" value={password} 
-                onChange={(e) => setPassword(e.target.value)} />
+            <StyledLabel text="Password" />
+            <StyledInput type="password" value={password} setValue={setPassword} />
 
-            <div className="px-2 pt-1 pb-1 mb-8 resize bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none              focus:shadow-outline">
-                <button onClick={submit}>Log in</button>
-            </div>
-
+            <ActionButton action={submit} text="Log In" />
             {submission.success ? <p>Log in success!</p> : <p>{submission.message}</p>}
-        </label>
     </div>
 
-    return toHome ? <Redirect to="/" /> : form
+    return toHome ? <Redirect to="/" /> : <CardWLogo child={form} />
 }
