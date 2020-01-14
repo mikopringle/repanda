@@ -50,10 +50,10 @@ export function Login(props) {
 
     const form = <div>
             <StyledLabel text="Email" />
-            <StyledInput value={email} setValue={setEmail} />
+            <StyledInput value={email} setValue={setEmail} placeholder="Email"/>
 
             <StyledLabel text="Password" />
-            <StyledInput type="password" value={password} setValue={setPassword} />
+            <StyledInput type="password" value={password} setValue={setPassword} placeholder="Password" />
 
             <ActionButton action={submit} text="Log In" />
             {submission.success ? <p>Log in success!</p> : <p>{submission.message}</p>}
