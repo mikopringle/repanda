@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { post } from '../api/api'
+import Logo from '../components/logo'
+import { ActionButton } from '../components/buttons'
 
 
 export function Register(props) {
@@ -49,35 +51,32 @@ export function Register(props) {
         }
     }
 
-    const form = <div className="register">
-        <label>
-            <h1 className="bg-teal-500 text-white text-2xl font-bold font-sans flex items-center justify-center" >SurveyPanda</h1>
-            <div className="text-gray-700 text-xl font-bold mb-1">
-                Company Name:
-           </div>
-            <input className="appearance-none block  bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-6 leading-tight focus:outline-none focus:bg-white w-64" value={name} onChange={(e) => setName(e.target.value)}></input>
-            <div className="text-gray-700 text-xl font-bold mb-1">
-                Company Industry:
-           </div>
-            <input className="appearance-none block bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-6 leading-tight focus:outline-none focus:bg-white w-64" value={inudstry} onChange={(e) => setIndustry(e.target.value)}></input>
-            <div className="text-gray-700 text-xl font-bold mb-1">
-                Email:
-           </div>
-            <input className="appearance-none block bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-6 leading-tight focus:outline-none focus:bg-white w-64" value={email} onChange={(e) => setEmail(e.target.value)}></input>
-            <div className="text-gray-700 text-xl font-bold mb-1">
-                Password:
-           </div>
-            <input className="appearance-none block  bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-6 leading-tight focus:outline-none focus:bg-white w-64" value={password} type="password" onChange={(e) => setPassword(e.target.value)}></input>
-            <div className="text-gray-700 text-xl font-bold mb-1">
-                Company ABN:
-           </div>
-            <input className="appearance-none block  bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-6 leading-tight focus:outline-none focus:bg-white w-64" value={abn} onChange={(e) => setAbn(e.target.value)} />
-            <div className="text-gray-700 text-xl font-bold mb-1">
-                Invitation Code:
-           </div>
-            <input className="appearance-none block  bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-6 leading-tight focus:outline-none focus:bg-white w-64" value={code} onChange={(e) => setCode(e.target.value)} />
-            <button className="font-bold  py-2 px-3 text-xl rounded-lg bg-teal-500 text-white flex items-center justify-center" onClick={submit}>Submit</button>
-        </label>
+    const inputStyles = "appearance-none block bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-6 leading-tight focus:outline-none focus:bg-white w-64"
+
+    const StyledLabel = (props) => <div className="text-gray-700 text-xl font-bold mb-1">{props.text}</div>
+
+    const form = <div>
+            <Logo />
+
+            <StyledLabel text="Company Name" />
+            <input className={inputStyles} value={name} onChange={(e) => setName(e.target.value)}></input>
+
+            <StyledLabel text="Company Industry" />
+            <input className={inputStyles} value={inudstry} onChange={(e) => setIndustry(e.target.value)}></input>
+            
+            <StyledLabel text="Email" />
+            <input className={inputStyles} value={email} onChange={(e) => setEmail(e.target.value)}></input>
+
+            <StyledLabel text="Password" />
+            <input className={inputStyles} value={password} type="password" onChange={(e) => setPassword(e.target.value)}></input>
+
+            <StyledLabel text="Company ABN" />
+            <input className={inputStyles} value={abn} onChange={(e) => setAbn(e.target.value)} />
+            
+            <StyledLabel text="Invitation Code" />
+            <input className={inputStyles} value={code} onChange={(e) => setCode(e.target.value)} />
+
+            <ActionButton action={submit} text="submit" />
     </div>
 
     const success = toHome ? <Redirect to="/" /> : <h2>success! redirecting in 5 seconds...</h2>
