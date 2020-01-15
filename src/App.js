@@ -41,7 +41,7 @@ function App() {
   }
 
   return (
-    <div className="container mx-auto font-mono text-center">
+    <div className="w-full min-h-screen font-mono text-center bg-teal-200">
       <Router>
       <Status {...states} />
       <Switch>

@@ -3,7 +3,7 @@ import { post } from '../api/api'
 import { Redirect } from 'react-router-dom'
 import { StyledLabel, StyledInput } from '../components/formElements'
 import { ActionButton } from '../components/buttons'
-import { CardWLogo } from '../components/containers'
+import { CardWLogoSm } from '../components/containers'
 
 export function Login(props) {
     const [email, setEmail] = useState("")
@@ -29,7 +29,7 @@ export function Login(props) {
             props.setEmail(body.email)
             props.setToken(res.data.token)
             props.setCompanyId(res.data.companyId)
-            setTimeout(() => setToHome(true), 3000)
+            setTimeout(() => setToHome(true), 1500)
         }
         catch (err) {
             if (err.response){
@@ -59,5 +59,5 @@ export function Login(props) {
             {submission.success ? <p>Log in success!</p> : <p>{submission.message}</p>}
     </div>
 
-    return toHome ? <Redirect to="/" /> : <CardWLogo child={form} />
+    return toHome ? <Redirect to="/" /> : <CardWLogoSm child={form} />
 }

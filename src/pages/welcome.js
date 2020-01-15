@@ -1,6 +1,6 @@
 import React from 'react'
 import { LinkedButton } from '../components/buttons'
-import { CardWLogo } from '../components/containers'
+import { CardWLogoSm } from '../components/containers'
 
 export function Welcome(props) {
     const content = <div>
@@ -15,5 +15,5 @@ export function Welcome(props) {
             </div>
     </div>
     
-    return <CardWLogo child={content} />
+    return <CardWLogoSm child={content} />
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { post } from '../api/api'
 import { ActionButton } from '../components/buttons'
-import { CardWLogo } from '../components/containers'
+import { CardWLogoSm } from '../components/containers'
 import { StyledLabel, StyledInput } from '../components/formElements'
 
 
@@ -79,12 +79,12 @@ export function Register(props) {
     const error = <div><h2>Error! redirecting back in 5 seconds...</h2><p>Server side response:{submission.message}</p></div>
 
     if (!submission.submitted) {
-        return <CardWLogo child={form} />
+        return <CardWLogoSm child={form} />
     }
     else if (submission.submitted && !submission.error) {
-        return <CardWLogo child={success} />
+        return <CardWLogoSm child={success} />
     }
     else {
-        return <CardWLogo child={error} />
+        return <CardWLogoSm child={error} />
     }
 }

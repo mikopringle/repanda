@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { get } from '../api/api'
+import { CardWLogoMd } from '../components/containers'
+import { BigLeftHeading } from '../components/text'
 
 export function Dash(props){
     const [measures, setMeasures] = useState([])
@@ -25,6 +27,8 @@ export function Dash(props){
         apiCall(`search/week?id=${props.companyId}`)
     },[props.companyId])
 
+    const chart = <img className="inline-block px-10" src="https://via.placeholder.com/300" alt="placeholder for chart"/>
+
     //button that switches to employee mode
     const employeeMode = <button onClick={() => props.setEmployeeMode(true)}>Switch to employee mode</button>
 
@@ -33,18 +37,20 @@ export function Dash(props){
 
     //dashboard on successful data fetching
     const successScreen = <div>
-        <ul>{measures.map((measure, i) => <li key={measure}>{measure}: {averages[i]}</li>)}</ul>
-        {employeeMode}
+        <BigLeftHeading text="Your Dashboard" />
+        {chart}
+        <ul className="inline-block px-10">{measures.map((measure, i) => <li key={measure}>{measure}: {averages[i]}</li>)}</ul>
+        <div className="block py-10">{employeeMode}</div>
     </div>
 
     //error display
     const errorScreen = <h1>Error fetching</h1>
 
     if (loading && !success) {
-        return loadingScreen
+        return <CardWLogoMd child={loadingScreen} />
     }
     else if (!loading && success) {
-        return successScreen
+        return <CardWLogoMd child={successScreen} />
     }
-    else return errorScreen
+    else return <CardWLogoMd child={errorScreen} />
 }
