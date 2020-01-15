@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { get } from '../api/api'
 import { CardWLogoMd } from '../components/containers'
-import { BigLeftHeading } from '../components/text'
+import { BigLeftHeading, NumberDisplay } from '../components/text'
 
 export function Dash(props){
     const [measures, setMeasures] = useState([])
@@ -38,8 +38,10 @@ export function Dash(props){
     //dashboard on successful data fetching
     const successScreen = <div>
         <BigLeftHeading text="Your Dashboard" />
-        {chart}
-        <ul className="inline-block px-10">{measures.map((measure, i) => <li key={measure}>{measure}: {averages[i]}</li>)}</ul>
+        <div className="flex align-center">
+            {chart}
+            <ul className="inline-flex flex-col justify-center px-10">{measures.map((measure, i) => <li className="text-left py-5" key={measure}><NumberDisplay number={averages[i]}/><p className="ml-10 inline-block">{measure}</p></li>)}</ul>
+        </div>
         <div className="block py-10">{employeeMode}</div>
     </div>
 
