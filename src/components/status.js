@@ -1,6 +1,5 @@
 import React from 'react'
 import { LeftHeading } from './logo'
-import { Link } from 'react-router-dom'
 import { ActionButton, LinkedButton} from './buttons'
 
 export function Status(props) {
