@@ -13,7 +13,7 @@ export function Status(props) {
     return <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
         <div className="inline-flex justify-start">
         <LeftHeading />
-        <div class="w-full block flex lg:flex lg:items-center lg:justify-start lg:w-auto">
+        <div class="hidden lg:flex md:items-center md:justify-start md:w-auto">
                 <a href="/"className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
                     About
                 </a>
