@@ -1,13 +1,14 @@
 import React from 'react'
 import { LeftHeading } from './logo'
+import { Link } from 'react-router-dom'
+import { ActionButton, LinkedButton} from './buttons'
 
 export function Status(props) {
     const logged = <div className="text-white">
-        <p>You're logged in as {props.email}</p>
-        <button onClick={props.logout}>log out</button>
+        <ActionButton action={props.logout} text="Log Out" />
     </div>
 
-    const not = <p className="text-white">Not logged in</p>
+    const not = <LinkedButton to="/login" text="Log In" />
     const user = props.email ? logged : not
 
     return <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
