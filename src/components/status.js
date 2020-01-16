@@ -7,10 +7,10 @@ export function Status(props) {
         <ActionButton action={props.logout} text="Log Out" />
     </div>
 
-    const not = <LinkedButton to="/login" text="Log In" />
+    const not = <LinkedButton link="/login" text="Log In" />
     const user = props.email ? logged : not
 
-    return <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+    return <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-2">
         <div className="inline-flex justify-start">
         <LeftHeading />
         <div class="hidden lg:flex md:items-center md:justify-start md:w-auto">

@@ -11,7 +11,6 @@ export function Welcome(props) {
             </div>
             <div>
                 <LinkedButton link="/register" text="Register" />
-                <LinkedButton link="/login" text="Log In" />
             </div>
     </div>
     
