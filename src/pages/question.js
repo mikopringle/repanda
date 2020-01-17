@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { get, post } from '../api/api'
+import { GroupedActionButtons, ActionButton } from '../components/buttons'
+import { CardWLogoMd } from '../components/containers'
 
 export function Questionnaire(props){
     const [questions, setQuestions] = useState([])
@@ -73,29 +75,36 @@ export function Questionnaire(props){
 
     const answerChoices = [1, 2, 3, 4, 5]
 
-    //five buttons that represent 5 scores
-    const answerButtons = <div>
-        {answerChoices.map((choice) => {
-            return (
-            <button onClick={() => answer(choice)}>{choice}</button>
-            )
-        })}
-    </div>
+    const answerActions = answerChoices.map((choice) => {
+        return () => {
+            setAnswers({ array: [...answers.array, choice] })
+            if (currentq === questions.length - 1){
+                setReady(true)
+            }
+            else {
+                setCurrentq(currentq + 1)
+            }
+        }
+    })
 
     //text of current question
     const questionText = <h1>{questions[currentq]}</h1>
 
+    const switchMode = () => props.setEmployeeMode(false)
+
     //button that switches to employer mode
-    const employerMode = <button onClick={() => props.setEmployeeMode(false)}>Switch to employer mode</button>
+    const employerMode =  <ActionButton action={switchMode} text="Dashboard" />
 
     //load this for individual questions
     const questionPage = <div>
         {questionText}
-        {answerButtons}
+        <GroupedActionButtons actions={answerActions} texts={answerChoices} />
         {employerMode}
     </div>
 
 
 
-    return success ? <h1>Success!</h1> : error ? <h1>Error!</h1> : questionPage
+    const renderChild = success ? <h1>Success!</h1> : error ? <h1>Error!</h1> : questionPage
+
+    return <CardWLogoMd child={renderChild} />
 } 
