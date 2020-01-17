@@ -15,3 +15,9 @@ export function ActionButton ({action, text}){
         onClick={action}>{text}</button>
     )
 }
+
+export function NavButton ({link, text}) {
+    return (
+        <Link display="inline-block" to={link}><button className="inline-block text-teal-200 hover:text-white mr-4">{text}</button></Link>
+    )
+}

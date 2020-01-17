@@ -10,6 +10,10 @@ import { Login } from './pages/login'
 import { Dash } from './pages/dash'
 import { Status } from './components/status'
 import { Questionnaire } from './pages/question'
+import { About } from './pages/about'
+import { Docs } from './pages/docs'
+import { Contact } from './pages/contact'
+
 
 function App() {
   const [signed, setSigned] = useState(false)
@@ -50,6 +54,15 @@ function App() {
         </Route>
         <Route path="/login">
           <Login {...stateProps}/>
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/docs">
+          <Docs />
+        </Route>
+        <Route path="/contact">
+          <Contact />
         </Route>
         <Route exact path="/">
           {signed ? employeeMode ? <Questionnaire {...states} {...stateProps} /> : <Dash {...states} {...stateProps}/> : <Welcome />}
