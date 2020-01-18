@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 //const apiUrl = "http://52.63.127.93:3000/"
-const devUrl = "http://localhost:3001/"
+const devUrl = "https://surveypandaa.appspot.com/"
 
 export function post(route, body) {
     const url = devUrl + route

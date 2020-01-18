@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { get } from '../api/api'
 import { CardWLogoMd } from '../components/containers'
 import { BigLeftHeading, NumberDisplay } from '../components/text'
+import { ActionButton } from '../components/buttons'
 
 export function Dash(props){
     const [measures, setMeasures] = useState([])
@@ -16,8 +17,14 @@ export function Dash(props){
                 setLoading(false)
                 setSuccess(true)
                 console.log(res)
-                setMeasures(res.data.measures)
-                setAverages(res.data.averages)
+                if (res.data === "No results yet!"){
+                    setMeasures(["No Data","No Data","No Data"])
+                    setAverages([0, 0, 0])
+                }
+                else {
+                    setMeasures(res.data.measures)
+                    setAverages(res.data.averages)
+                }
             }
             catch (err) {
                 setLoading(false)
@@ -30,7 +37,7 @@ export function Dash(props){
     const chart = <img className="inline-block px-10" src="https://via.placeholder.com/300" alt="placeholder for chart"/>
 
     //button that switches to employee mode
-    const employeeMode = <button onClick={() => props.setEmployeeMode(true)}>Switch to employee mode</button>
+    const employeeMode = <ActionButton action={() => props.setEmployeeMode(true)} text="Questionnaire" />
 
     //loading screen
     const loadingScreen = <h1>Fetching insights, sit tight!</h1>
