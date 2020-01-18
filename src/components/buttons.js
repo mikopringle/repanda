@@ -16,6 +16,12 @@ export function ActionButton ({action, text}){
     )
 }
 
+export function SpinnerButton (){
+    return (
+        <button className="mx-4 my-4 bg-teal-700 text-white font-semibold py-2 px-4 border border-grey-400 rounded shadow">Loading!</button>
+    )
+}
+
 //Links to pages on the navbar
 export function NavButton ({link, text}) {
     return (
