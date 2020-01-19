@@ -28,7 +28,7 @@ export function Register(props) {
         }
         try {
             setSubmissionLoading(true)
-            const res = await post('user/new', params)
+            await post('user/new', params)
             setSubmissionLoading(false)
             setSubmission({
                 submitted: true,
@@ -40,6 +40,7 @@ export function Register(props) {
             }, 5000)
         }
         catch (err) {
+            setSubmissionLoading(false)
             setSubmission({
                 submitted: true,
                 error: true,
