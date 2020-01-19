@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import { post } from '../api/api'
-import { ActionButton } from '../components/buttons'
+import { ActionButton, SpinnerButton } from '../components/buttons'
 import { CardWLogoMd } from '../components/containers'
 import { StyledLabel, StyledInput } from '../components/formElements'
 
@@ -15,6 +15,7 @@ export function Register(props) {
     const [code, setCode] = useState("")
     const [submission, setSubmission] = useState({ submitted: false, error: null, message: null })
     const [toHome, setToHome] = useState(false)
+    const [submissionLoading, setSubmissionLoading] = useState(false)
 
     async function submit() {
         const params = {
@@ -26,8 +27,9 @@ export function Register(props) {
             code: code
         }
         try {
-            const res = await post('user/new', params)
-            console.log(res)
+            setSubmissionLoading(true)
+            await post('user/new', params)
+            setSubmissionLoading(false)
             setSubmission({
                 submitted: true,
                 error: false,
@@ -38,7 +40,7 @@ export function Register(props) {
             }, 5000)
         }
         catch (err) {
-            console.log(err.response)
+            setSubmissionLoading(false)
             setSubmission({
                 submitted: true,
                 error: true,
@@ -83,11 +85,10 @@ export function Register(props) {
                 </div>
             </div>
             
-            <ActionButton action={submit} text="submit" />
-
+            {submissionLoading ? <SpinnerButton /> : <ActionButton action={submit} text="submit" />}
     </div>
 
-    const success = toHome ? <Redirect to="/" /> : <h2>success! redirecting in 5 seconds...</h2>
+    const success = toHome ? <Redirect to="/" /> : <h2>Success! Verify your email before logging in, don't forget to check your spam folder!</h2>
 
     const error = <div><h2>Error! redirecting back in 5 seconds...</h2><p>Server side response:{submission.message}</p></div>
 
