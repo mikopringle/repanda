@@ -3,6 +3,7 @@ import { get } from '../api/api'
 import { CardWLogoMd } from '../components/containers'
 import { BigLeftHeading, NumberDisplay } from '../components/text'
 import { ActionButton } from '../components/buttons'
+import { DashChart } from '../components/charts'
 
 export function Dash(props){
     const [measures, setMeasures] = useState([])
@@ -34,7 +35,9 @@ export function Dash(props){
         apiCall(`search/week?id=${props.companyId}`)
     },[props.companyId])
 
-    const chart = <img className="inline-block px-10" src="https://via.placeholder.com/300" alt="placeholder for chart"/>
+    const chart = <div className="h-auto w-auto">
+        <DashChart measures={measures} averages={averages} />
+    </div>
 
     //button that switches to employee mode
     const employeeMode = <ActionButton action={() => props.setEmployeeMode(true)} text="Questionnaire" />
@@ -45,8 +48,8 @@ export function Dash(props){
     //dashboard on successful data fetching
     const successScreen = <div>
         <BigLeftHeading text={`Your Dashboard`} />
-        <div className="flex align-center">
-            {chart}
+        <div className="flex-wrap md:flex md:items-center">
+            <div className="inline-block">{chart}</div>
             <ul className="inline-flex flex-col justify-center px-10">{measures.map((measure, i) => <li className="text-left py-5" key={measure}><NumberDisplay number={averages[i]}/><p className="ml-10 inline-block">{measure}</p></li>)}</ul>
         </div>
         <div className="block py-10">{employeeMode}</div>
