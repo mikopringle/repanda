@@ -3,7 +3,7 @@ import { get } from '../api/api'
 import { CardWLogoMd } from '../components/containers'
 import { BigLeftHeading, NumberDisplay } from '../components/text'
 import { ActionButton } from '../components/buttons'
-import { ResponsiveLine } from '@nivo/line'
+import { DashChart } from '../components/charts'
 
 export function Dash(props){
     const [measures, setMeasures] = useState([])
@@ -35,26 +35,9 @@ export function Dash(props){
         apiCall(`search/week?id=${props.companyId}`)
     },[props.companyId])
 
-    const chartData = measures.map((measure, i) => 
-        ({
-            id: measure,
-            data: [
-                {
-                    x: "Monday",
-                    y: averages[i]
-                },
-                {
-                    x: "Monday",
-                    y: averages[i]
-                },
-                {
-                    x: "Monday",
-                    y: averages[i]
-                }
-            ]
-        }))
-
-    const chart = <ResponsiveLine data={chartData}/>
+    const chart = <div className="h-auto w-auto">
+        <DashChart measures={measures} averages={averages} />
+    </div>
 
     //button that switches to employee mode
     const employeeMode = <ActionButton action={() => props.setEmployeeMode(true)} text="Questionnaire" />
